@@ -22,11 +22,11 @@ static Header base;
 static Header *freep;
 
 void
-free(void *ap)
+free(void *item)
 {
   Header *bp, *p;
 
-  bp = (Header*)ap - 1;
+  bp = (Header*)item - 1;
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
     if(p >= p->s.ptr && (bp > p || bp < p->s.ptr))
       break;
